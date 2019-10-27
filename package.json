@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "ics": "^2.18.0",
-    "mealts": "file:../mealts"
+    "mealts": "git+https://git.nalava12.xyz/kimdu1234/MealTS"
   }
 }
