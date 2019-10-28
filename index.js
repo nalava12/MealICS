@@ -3,7 +3,7 @@ const School = require('mealts').School
 const fs = require('fs')
 let namsan = new School(School.Type.HIGH, School.Region.GYEONGNAM, 'S100000693')
 
-let today = new Date(2019, 9)
+let today = new Date()
 
 let events = []
 
