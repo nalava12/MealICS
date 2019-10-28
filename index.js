@@ -29,5 +29,19 @@ namsan.getMonthlyMenu(today.getFullYear(), today.getMonth() + 1).then(menus => {
     }
   })
   let {error, value} = ics.createEvents(events)
+  value = value.replace(/DTSTART/g, 'DTSTART;TZID=Asia/Seoul')
+  let icsarr = value.split('\n')
+  icsarr.splice(2, 0, `X-WR-CALNAME:급식
+X-WR-TIMEZONE:Asia/Seoul
+BEGIN:VTIMEZONE
+TZID=Asia/Seoul
+X-LIC-LOCATION:Asia/Seoul
+BEGIN:STANDARD
+TZOFFSETFROM:+0900
+TZOFFSETTO:+0900
+TZNAME:KST
+END:STANDARD
+END:VTIMEZONE`)
+  value = icsarr.join('\n')
   fs.writeFileSync('meal.ics', value)
 })
