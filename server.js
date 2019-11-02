@@ -8,6 +8,7 @@ let today = new Date()
 let events = []
 
 http.createServer((req, res) => {
+  events = []
   res.writeHead(200, { "Content-Type" : "text/calendar" })
   Promise.all([namsan.getMonthlyMenu(today.getFullYear(), today.getMonth() + 1), namsan.getMonthlyMenu(today.getFullYear(), today.getMonth() + 2)]).then(menuss => {
     menuss.forEach((menus, mind) => {
