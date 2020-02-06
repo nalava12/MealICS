@@ -3,13 +3,12 @@ const School = require('mealts').School
 const http = require('http')
 let namsan = new School(School.Type.HIGH, School.Region.GYEONGNAM, 'S100000693')
 
-let today = new Date()
-
 let events = []
 
 http.createServer((req, res) => {
   events = []
   res.writeHead(200, { "Content-Type" : "text/calendar" })
+  let today = new Date()
   Promise.all([namsan.getMonthlyMenu(today.getFullYear(), today.getMonth() + 1), namsan.getMonthlyMenu(today.getFullYear(), today.getMonth() + 2)]).then(menuss => {
     menuss.forEach((menus, mind) => {
       menus.forEach((menu, ind) => {
